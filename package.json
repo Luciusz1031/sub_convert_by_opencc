@@ -1,0 +1,57 @@
+{
+  "name": "private-opencc-converter",
+  "version": "1.0.0",
+  "description": "A personal desktop Simplified/Traditional Chinese converter powered by OpenCC.",
+  "main": "src/main.js",
+  "author": "Private App",
+  "license": "Apache-2.0",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder",
+    "build:win": "electron-builder --win nsis portable",
+    "build:mac": "electron-builder --mac dmg zip",
+    "dist": "electron-builder --win nsis portable --mac dmg zip"
+  },
+  "dependencies": {
+    "opencc-js": "1.3.1"
+  },
+  "devDependencies": {
+    "electron": "^31.7.7",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.private.openccconverter",
+    "productName": "我的簡繁轉換器",
+    "asar": true,
+    "files": [
+      "src/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "output": "release"
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "我的簡繁轉換器",
+      "include": "build/installer.nsh"
+    },
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "category": "public.app-category.productivity"
+    },
+    "npmRebuild": false,
+    "buildDependenciesFromSource": false
+  }
+}

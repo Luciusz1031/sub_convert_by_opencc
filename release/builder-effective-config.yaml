@@ -1,0 +1,29 @@
+directories:
+  output: release
+  buildResources: build
+appId: com.private.openccconverter
+productName: 我的簡繁轉換器
+asar: true
+files:
+  - filter:
+      - src/**/*
+      - package.json
+win:
+  target:
+    - nsis
+    - portable
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: 我的簡繁轉換器
+  include: build/installer.nsh
+mac:
+  target:
+    - dmg
+    - zip
+  category: public.app-category.productivity
+npmRebuild: false
+buildDependenciesFromSource: false
+electronVersion: 31.7.7
